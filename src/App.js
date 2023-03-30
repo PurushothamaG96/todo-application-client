@@ -5,6 +5,7 @@ import Signup from "./components/Signup";
 import Signin from "./components/Signin";
 import Home from "./components/Home";
 import AddTodo from "./components/AddTodo";
+import UpdateTod from "./components/UpdateTod";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="signup" element={<Signup/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/addtodo" element={<AddTodo/>}/>
+        <Route path="/updatetodo" element={<UpdateTod/>}/>
       </Routes>
       </BrowserRouter>
     </div>

@@ -7,9 +7,7 @@
 .todo-container table{
     width:100%
 }
-table thead tr{
-    
-}
+
 table tbody tr td, table thead tr th{
     border-bottom: 2px solid gray;
     height: 3rem;
@@ -29,5 +27,37 @@ table tbody tr:nth-child(even){
 }
 .star-icon{
     cursor: pointer;
+}
+.filter-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.filter-container label, .filter-container select{
+    color: rgb(255, 30, 0);
+    font-size: larger;
+    margin-left: 1rem;
+}
+.todo-main{
+    width: 80vw;
+    margin: 0vw 10vw;
+}
+
+@media screen and (max-width:1200px) {
+    .todo-container{
+        width: 1200px;
+        margin: 0px;
+        
+    }
+    .todo-main{
+        width: 1200px;
+        overflow-x: scroll;
+        margin: 0px;
+        padding: 0px;
+    }
+    .filter-container{
+        width: 1100px;  
+    }
+
 }
 

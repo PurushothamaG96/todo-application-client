@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios"
 import {useSelector, useDispatch} from "react-redux"
 import { get_todo_data } from '../Redux/Todo/todoAction';
+import { Link } from 'react-router-dom';
 import "./todo.css"
 function Todo(props) {
     const [dueDates, setDueDate] = useState("All")
-    const [status, setStatus] = useState("All")
+    const [statusCompleted, setStatus] = useState("All")
     const [nearDate, setNearDate] = useState(1)
     //redux
     const todoselector = useSelector((state)=>state)
@@ -15,10 +16,10 @@ function Todo(props) {
     //useeffect
     useEffect(()=>{
         handleDataUpdate()
-    }, [dueDates, status, nearDate])
+    }, [dueDates, statusCompleted, nearDate])
 
     function handleDataUpdate(){
-        const url = `http://localhost:5000/app/v1/todoposts?dueDate=${dueDates}&iscompleted=${status}&nearDate=${nearDate}`
+        const url = `http://localhost:5000/app/v1/todoposts?dueDate=${dueDates}&iscompleted=${statusCompleted}&nearDate=${nearDate}`
         axios(url, {
             headers:{
                 "Authorization":JSON.parse(localStorage.getItem("token"))
@@ -48,28 +49,32 @@ function Todo(props) {
         .then((response)=>response.json())
         .then((res)=>{
             handleDataUpdate()
+            console.log(todoselector)
         }).catch(e=>{
             console.log({"err":e})
         })
     }
     return (
-        <div className='container'>
+        <div className='todo-main'>
             <div className='todo-container'>
                 <div className='filter-container'>
-                    <select onChange={(e)=>setDueDate(e.target.value)}>
+                    <label htmlFor="dueDate">Filter By Due Date :</label>
+                    <select id='dueDate' onChange={(e)=>setDueDate(e.target.value)}>
                         <option value="All">All</option>
                         <option value="Today">Today</option>
                         <option value="Upcomings">Up Comings due</option>
                         <option value="Expired">Expired Due Date</option>
                     </select>
-                    <select onChange={(e)=>setStatus(e.target.value)}>
+                    <label htmlFor="status">Filter By status :</label>
+                    <select id="status" onChange={(e)=>setStatus(e.target.value)}>
                         <option value="All">All</option>
                         <option value="false">Pending</option>
                         <option value="true">Completed</option>
                     </select>
-                    <select onChange={(e)=>setNearDate(e.target.value)}>
-                        <option value="1">From Near Dates to Last Date</option>
-                        <option value="-1">From Last Dates to NearstDates</option>
+                    <label htmlFor="near">Sort By Dates :</label>
+                    <select id='near' onChange={(e)=>setNearDate(e.target.value)}>
+                        <option value="1">From Nearest Dates to Last Date</option>
+                        <option value="-1">From Last Dates to Nearest Dates</option>
                     </select>
                 </div>
                 <table>
@@ -94,6 +99,9 @@ function Todo(props) {
                             <th>
                                 Starred
                             </th>
+                            <th>
+                                Update
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -108,7 +116,8 @@ function Todo(props) {
                             <td>{val.item}</td>
                             <td>{val.priority_level}</td>
                             <td>{due[0]}</td>
-                            <td >{(val.starred==="on")?<i id={i} onClick={handleStarred} className='fa fa-star text-primary star-icon'></i>:<i id={i} onClick={handleStarred} className='fa fa-star text-inform star-icon'></i>}</td>
+                            <td>{(val.starred==="on")?<i id={i} onClick={handleStarred} className='fa fa-star text-primary star-icon'></i>:<i id={i} onClick={handleStarred} className='fa fa-star text-inform star-icon'></i>}</td>
+                            <td><Link className="text-decoration-none btn btn-primary" to="/updatetodo" state={val}>Update</Link></td>
                         </tr>
                     )
                 })}

@@ -33,7 +33,7 @@
     height: 30px;
 }
 
-.addtodo-container .fields-container select, .fields-container input{
+.addtodo-container .fields-container select, .fields-container input, .check-box-container select{
     text-align: left;
     color: rgb(228, 91, 0);
     font-weight: 600;
