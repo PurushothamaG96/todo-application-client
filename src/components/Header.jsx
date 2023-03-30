@@ -13,12 +13,16 @@ function Header(props) {
                         <ul>
                             <li><Link to={"/home"} className="text-decoration-none text-white">Home</Link></li>
                             <li> <Link to={"/addtodo"} className="text-decoration-none text-white">Add ToDo</Link></li>
-                            <li onClick={()=>{
+                            <li onClick={() => {
                                 localStorage.removeItem("token")
-                            }}> <Link to={"/"} className="text-decoration-none text-white">Log Out</Link></li>  
+                            }}> <Link to={"/"} className="text-decoration-none text-white">Log Out</Link></li>
                         </ul>
+
                     </div>
+                    
                 </div>
+                
+
 
             </nav>
         </>

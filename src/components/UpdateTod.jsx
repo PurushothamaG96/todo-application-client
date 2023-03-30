@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import Header from './Header';
 import { useNavigate } from 'react-router-dom';
 import "./addtodo.css"
-function AddTodo(props) {
-    const [rem, setRem] = useState({item:"",priority_level:"Low", due_date:"", starred:"off"})
+function UpdateTod(props) {
+    const [rem, setRem] = useState({item:"",priority_level:"Low", due_date:"", starred:false})
     const navigate = useNavigate()
     const handleForm = async(e)=>{
         e.preventDefault()
@@ -20,7 +20,7 @@ function AddTodo(props) {
             })
             .then((response)=>response.json())
             .then((res)=>{
-                setRem({item:"",priority_level:"Low", due_date:"", starred:"off"})
+                setRem({item:"",priority_level:"Low", due_date:"", starred:false})
                 navigate("/home")
             }).catch(e=>{
                 console.log({"err":e})
@@ -30,7 +30,7 @@ function AddTodo(props) {
 
     const handleCancel = (e)=>{
         e.preventDefault()
-        setRem({item:"",priority_level:"Low", due_date:"", starred:"off"})
+        setRem({item:"",priority_level:"Low", due_date:"", starred:false})
         navigate("/home")
     }
     return (
@@ -58,7 +58,7 @@ function AddTodo(props) {
                         <input type="date" id='date' onChange={(e)=>setRem({...rem, due_date:e.target.value})} required/>
                     </div>
                     <div className='check-box-container'>
-                        <input type="checkbox"  onClick={(e)=>setRem({...rem, starred:(rem.starred==="off")?"on":"off"})}/>
+                        <input type="checkbox"  onClick={(e)=>setRem({...rem, starred:e.target.value})}/>
                         <label htmlFor="stared">Is important<i className='fa fa-star'></i></label>
                     </div>
                     <div className='btn-container'>
@@ -73,4 +73,4 @@ function AddTodo(props) {
     );
 }
 
-export default AddTodo;
+export default UpdateTod;
