@@ -100,6 +100,9 @@ function Todo(props) {
                                 Starred
                             </th>
                             <th>
+                                Status
+                            </th>
+                            <th>
                                 Update
                             </th>
                         </tr>
@@ -117,6 +120,7 @@ function Todo(props) {
                             <td>{val.priority_level}</td>
                             <td>{due[0]}</td>
                             <td>{(val.starred==="on")?<i id={i} onClick={handleStarred} className='fa fa-star text-primary star-icon'></i>:<i id={i} onClick={handleStarred} className='fa fa-star text-inform star-icon'></i>}</td>
+                            <td className={`${val.isCompleted?"text-success":"text-warning"}`}>{(val.isCompleted===true)?"Completed":"Pending"}</td>
                             <td><Link className="text-decoration-none btn btn-primary" to="/updatetodo" state={val}>Update</Link></td>
                         </tr>
                     )
