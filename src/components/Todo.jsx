@@ -8,6 +8,7 @@ function Todo(props) {
     const [dueDates, setDueDate] = useState("All")
     const [statusCompleted, setStatus] = useState("All")
     const [nearDate, setNearDate] = useState(1)
+    const [star, setStar] = useState("All")
     //redux
     const todoselector = useSelector((state)=>state)
     const dispacth=useDispatch()
@@ -16,10 +17,10 @@ function Todo(props) {
     //useeffect
     useEffect(()=>{
         handleDataUpdate()
-    }, [dueDates, statusCompleted, nearDate])
+    }, [dueDates, statusCompleted, nearDate, star])
 
     function handleDataUpdate(){
-        const url = `https://purushothama-todo-server.onrender.com/app/v1/todoposts?dueDate=${dueDates}&iscompleted=${statusCompleted}&nearDate=${nearDate}`
+        const url = `https://purushothama-todo-server.onrender.com/app/v1/todoposts?dueDate=${dueDates}&iscompleted=${statusCompleted}&nearDate=${nearDate}&star=${star}`
         axios(url, {
             headers:{
                 "Authorization":JSON.parse(localStorage.getItem("token"))
@@ -58,23 +59,29 @@ function Todo(props) {
         <div className='todo-main'>
             <div className='todo-container'>
                 <div className='filter-container'>
-                    <label htmlFor="dueDate">Filter By Due Date :</label>
+                    <label htmlFor="dueDate">Due Date :</label>
                     <select id='dueDate' onChange={(e)=>setDueDate(e.target.value)}>
                         <option value="All">All</option>
                         <option value="Today">Today</option>
                         <option value="Upcomings">Up Comings due</option>
                         <option value="Expired">Expired Due Date</option>
                     </select>
-                    <label htmlFor="status">Filter By status :</label>
+                    <label htmlFor="status">status :</label>
                     <select id="status" onChange={(e)=>setStatus(e.target.value)}>
                         <option value="All">All</option>
                         <option value="false">Pending</option>
                         <option value="true">Completed</option>
                     </select>
-                    <label htmlFor="near">Sort By Dates :</label>
+                    <label htmlFor="near">Dates :</label>
                     <select id='near' onChange={(e)=>setNearDate(e.target.value)}>
-                        <option value="1">From Nearest Dates to Last Date</option>
-                        <option value="-1">From Last Dates to Nearest Dates</option>
+                        <option value="1"> From Nearest dates</option>
+                        <option value="-1">From Last Dates</option>
+                    </select>
+                    <label htmlFor="near">star :</label>
+                    <select id='near' onChange={(e)=>setStar(e.target.value)}>
+                        <option value="All">All</option>
+                        <option value="on">starred</option>
+                        <option value="false">Normal</option>
                     </select>
                 </div>
                 <table>

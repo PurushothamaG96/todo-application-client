@@ -35,8 +35,11 @@ table tbody tr:nth-child(even){
 }
 .filter-container label, .filter-container select{
     color: rgb(255, 30, 0);
-    font-size: larger;
-    margin-left: 1rem;
+    font-size: larger; 
+}
+.filter-container select{
+    margin-right:0.5rem;
+    background-color:white;
 }
 .todo-main{
     width: 80vw;
