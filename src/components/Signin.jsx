@@ -1,6 +1,7 @@
 import React, { useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios'
+import "./sign.css"
 const Signin=()=> {
     const navigate = useNavigate()
     const [data, setData] = useState({ email: "", password: "" })
@@ -29,37 +30,38 @@ const Signin=()=> {
     }
     return (
         <>
-            <div className='container'>
-                <div className='main-card d-flex justify-content-center'>
-                    <div className='form-container col-12 p-2 '>
-                        <div className='inner-container m-2 my-5'>
-                        <h1 className='m-2'>Logo</h1>
-                        <h5 className='m-2'>Create Acoount</h5>
+            
+                <div className='main-card'>
+                    <div className='form-container'>
+                        <div className='inner-container'>
+                        <h1 className=''>Logo</h1>
+                        <h5 className=''>Create Acoount</h5>
                         <form onSubmit={handleSubmit}>
-                            <div className='col-xl-12'>
-                                <input type='email' className='form-control m-2' placeholder="User Id" value={data.email} onChange={(e)=>{setData({...data, email:e.target.value})}} required/>
+                            <div className='form-fields'>
+                                <input type='email' className='form-control' placeholder="User Id" value={data.email} onChange={(e)=>{setData({...data, email:e.target.value})}} required/>
                             </div>
-                            <div className='col-xl-12'>
-                            <input type='password' className='form-control m-2' placeholder="Password" value={data.password} onChange={(e)=>{setData({...data, password:e.target.value})}} required/>
+                            <div className='form-fields'>
+                            <input type='password' className='form-control' placeholder="Password" value={data.password} onChange={(e)=>{setData({...data, password:e.target.value})}} required/>
                             </div>
-                            <div className='col-xl-12'>
-                                <button className='form-control m-2 btn btn-primary'>Sign In</button>
+                            <div className='form-fields'>
+                                <button className='form-control btn btn-primary'>Sign In</button>
                             </div>
                         </form>
-                        <div className='col-xl-12'>
-                            <Link to={'/signup'} className="text-decoration-none"> <button className='form-control  m-2'>Sign Up</button></Link>
+                        <div className='form-fields'>
+                            <Link to={'/signup'} className="text-decoration-none"> <button className='form-control nav-btn'>Sign Up</button></Link>
                         </div>
                         </div>
                     </div>
-                </div>
-                <Validation trigger={valid}>
-                <div className='card-message'>
-                    <h3>{message.status}</h3>
-                    <p>{message.message}</p>
-                    <button onClick={()=>setValid(false)}>ok</button> 
+                    <Validation trigger={valid}>
+                    <div className='card-message'>
+                    <h3 className='text-danger'>{message.status}</h3>
+                    <p className='text-danger'>{message.message}</p>
+                    <button className='btn btn-primary' onClick={()=>setValid(false)}>ok</button> 
                 </div>
                 </Validation>
-            </div>
+                </div>
+                
+            
         </>
     );
 }
