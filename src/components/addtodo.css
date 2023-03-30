@@ -1,0 +1,52 @@
+.add-todo{
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top:1rem ;
+}
+
+.addtodo-container{
+    width: 500px;
+    border: 2px solid orange;
+    min-height: 60vh;
+    border-radius: 2rem;
+    padding: 1rem;
+    background-color: rgb(235, 222, 207);
+}
+
+.addtodo-container .fields-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding:0.5rem 1rem;
+    
+}
+
+.addtodo-container .fields-container label, .check-box-container label{
+    text-align: left;
+    color: rgb(228, 128, 14);
+    font-weight: 700;
+}
+.fields-container input{
+    height: 30px;
+}
+
+.addtodo-container .fields-container select, .fields-container input{
+    text-align: left;
+    color: rgb(228, 91, 0);
+    font-weight: 600;
+}
+.check-box-container{
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.check-box-container>input{
+    margin-right: 1rem;
+    width: 20px;
+    height: 20px;
+}

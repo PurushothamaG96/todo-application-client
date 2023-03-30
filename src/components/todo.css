@@ -1,0 +1,33 @@
+.todo-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.todo-container table{
+    width:100%
+}
+table thead tr{
+    
+}
+table tbody tr td, table thead tr th{
+    border-bottom: 2px solid gray;
+    height: 3rem;
+    margin-bottom: 0px;
+    font-size: 1.2rem;
+    color: orangered;
+}
+table thead tr th{
+    background-color: rgb(58, 55, 51);
+}
+
+table tbody tr:nth-child(odd){
+    background-color: rgb(190, 185, 179);
+}
+table tbody tr:nth-child(even){
+    background-color: rgb(136, 119, 99);
+}
+.star-icon{
+    cursor: pointer;
+}
+
