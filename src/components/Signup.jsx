@@ -17,7 +17,7 @@ const Signup=()=> {
             setValid(true)
         }
         else{
-            axios.post("http://localhost:5000/app/v1/register", data)
+            axios.post("https://purushothama-todo-server.onrender.com/app/v1/register", data)
             .then(result=>{
                 setData({email:"", password:""})
                 setConfirmPassword("")

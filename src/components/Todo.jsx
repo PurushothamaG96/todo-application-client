@@ -19,7 +19,7 @@ function Todo(props) {
     }, [dueDates, statusCompleted, nearDate])
 
     function handleDataUpdate(){
-        const url = `http://localhost:5000/app/v1/todoposts?dueDate=${dueDates}&iscompleted=${statusCompleted}&nearDate=${nearDate}`
+        const url = `https://purushothama-todo-server.onrender.com/app/v1/todoposts?dueDate=${dueDates}&iscompleted=${statusCompleted}&nearDate=${nearDate}`
         axios(url, {
             headers:{
                 "Authorization":JSON.parse(localStorage.getItem("token"))
@@ -37,7 +37,7 @@ function Todo(props) {
         if(todoselector[e.target.id].starred==="on") val = "false"
         else val = "on"
 
-        fetch(`http://localhost:5000/app/v1/todoposts/${todoselector[e.target.id]._id}`, {
+        fetch(`https://purushothama-todo-server.onrender.com/app/v1/todoposts/${todoselector[e.target.id]._id}`, {
             method:"put",
             headers: {
                 'Accept': 'application/json',

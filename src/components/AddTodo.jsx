@@ -9,7 +9,7 @@ function AddTodo(props) {
         e.preventDefault()
         const {item, priority_level, due_date} = rem
         if(item && priority_level && due_date){
-            fetch("http://localhost:5000/app/v1/todoposts", {
+            fetch("https://purushothama-todo-server.onrender.com/app/v1/todoposts", {
                 method:"post",
                 headers: {
                     'Accept': 'application/json',

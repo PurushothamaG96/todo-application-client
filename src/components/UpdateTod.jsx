@@ -17,7 +17,7 @@ function UpdateTod(props) {
         e.preventDefault()
         const {item, priority_level, due_date} = rem
         if(item && priority_level && due_date){
-            fetch(`http://localhost:5000/app/v1/todoposts/updates/${location.state._id}`, {
+            fetch(`https://purushothama-todo-server.onrender.com/app/v1/todoposts/updates/${location.state._id}`, {
                 method:"put",
                 headers: {
                     'Accept': 'application/json',
@@ -81,8 +81,7 @@ function UpdateTod(props) {
                         <button className='btn btn-primary me-2'>upadete ToDo</button>
                         <button className='btn btn-warning text-white' onClick={handleCancel} >Cancel</button>
                     </div>
-                </form>
-                
+                </form> 
             </div>
         </>
         
