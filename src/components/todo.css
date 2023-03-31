@@ -20,10 +20,10 @@ table thead tr th{
 }
 
 table tbody tr:nth-child(odd){
-    background-color: rgb(190, 185, 179);
+    background-color: rgb(252, 246, 238);
 }
 table tbody tr:nth-child(even){
-    background-color: rgb(136, 119, 99);
+    background-color: rgb(235, 235, 235);
 }
 .star-icon{
     cursor: pointer;
