@@ -1,10 +1,19 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from './Header';
 import { useNavigate } from 'react-router-dom';
 import "./addtodo.css"
 function AddTodo(props) {
     const [rem, setRem] = useState({item:"",priority_level:"Low", due_date:"", starred:"off"})
     const navigate = useNavigate()
+
+    //token verify
+    const token = JSON.parse(localStorage.getItem("token"))
+    useEffect(()=>{
+        isTokenPresent()
+    },[])
+    function isTokenPresent(){
+        if(!token) navigate("/")
+    }
     const handleForm = async(e)=>{
         e.preventDefault()
         const {item, priority_level, due_date} = rem

@@ -6,11 +6,17 @@ function UpdateTod(props) {
     const location = useLocation()
     const [rem, setRem] = useState({item:"",priority_level:"Low", due_date:"", starred:false, isCompleted:false})
     const navigate = useNavigate()
+    const token  = JSON.parse(localStorage.getItem("token"))
     useEffect(()=>{
+        isTokenPresent()
         setRem({item:location.state.item,priority_level:location.state.priority_level, due_date:location.state.due_date.split("T")[0], starred:location.state.starred, isCompleted:location.state.isCompleted})
         
     }, []) 
-    console.log(rem)
+    
+
+    function isTokenPresent(){
+        if(!token) navigate("/")
+    }
     
 
     const handleForm = async(e)=>{
